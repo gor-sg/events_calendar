@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BaseParserService
   def perform
     content = Nokogiri::HTML(page_content)
@@ -9,7 +11,7 @@ class BaseParserService
         title: title(e),
         description: description(e),
         date_start: date_start(e),
-        date_end: date_end(e),
+        date_end: date_end(e)
       }
 
       create_record(data)
@@ -22,7 +24,7 @@ class BaseParserService
   def page_content
     uri = URI(self.class::URL)
 
-    body = Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == 'https') do |http|
+    Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == 'https') do |http|
       request = Net::HTTP::Get.new(uri)
 
       response = http.request(request)

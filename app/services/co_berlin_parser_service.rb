@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CoBerlinParserService < BaseParserService
   URL = 'https://www.co-berlin.org/en/calender'
 
@@ -7,31 +9,31 @@ class CoBerlinParserService < BaseParserService
     page.css('div.seite-c-single')
   end
 
-  def title(e)
-    e.css('.article-title').text
+  def title(element)
+    element.css('.article-title').text
   end
 
-  def description(e)
-    e.css('.article-text').text
+  def description(element)
+    element.css('.article-text').text
   end
 
-  def date_start(e)
-    return date_single(e) if single_event?(e)
+  def date_start(element)
+    return date_single(element) if single_event?(element)
 
-    e.css('.date-display-start')[0]['content'].to_date
+    element.css('.date-display-start')[0]['content'].to_date
   end
 
-  def date_end(e)
-    return date_single(e) if single_event?(e)
+  def date_end(element)
+    return date_single(element) if single_event?(element)
 
-    e.css('.date-display-end')[0]['content'].to_date
+    element.css('.date-display-end')[0]['content'].to_date
   end
 
-  def date_single(e)
-    e.css('.date-display-single')[0]['content'].to_date
+  def date_single(element)
+    element.css('.date-display-single')[0]['content'].to_date
   end
 
-  def single_event?(e)
-    e.css('.date-display-range').empty?
+  def single_event?(element)
+    element.css('.date-display-range').empty?
   end
 end
