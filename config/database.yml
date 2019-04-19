@@ -3,16 +3,6 @@ default: &default
   encoding: unicode
   pool: 5
 
-production:
-  <<: *default
-  host: <%= ENV['DB_HOST'] %>
-  database: <%= ENV['DB_NAME'] %>
-  username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
-
-staging:
-  <<: *default
-
 development:
   <<: *default
   host: <%= ENV['DB_HOST'] %>
@@ -24,3 +14,10 @@ test:
   host: <%= ENV['DB_HOST'] %>
   database: events_calendar_test
   username: <%= ENV['DB_USERNAME'] %>
+
+production:
+  <<: *default
+  host: <%= ENV['DB_HOST'] %>
+  database: <%= ENV['DB_NAME'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
