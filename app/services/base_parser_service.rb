@@ -1,7 +1,15 @@
 # frozen_string_literal: true
 
 class BaseParserService
-  def perform
+  private_class_method :new
+
+  def self.perform
+    raise "Base class doesn't support perform!" unless const_defined? :URL
+
+    new.process
+  end
+
+  def process
     content = Nokogiri::HTML(page_content)
 
     puts get_elements(content).count
