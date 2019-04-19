@@ -1,0 +1,27 @@
+AllCops:
+  Exclude:
+    - 'bin/*'
+    - 'db/**/*.rb'
+    - 'vendor/**/*'
+    - '.bundle/**/*'
+
+Metrics/LineLength:
+  Max: 120
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Security/Open:
+  Enabled: false
+
+Documentation:
+  Enabled: false
+
+Security/YAMLLoad:
+  Enabled: false
