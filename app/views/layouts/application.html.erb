@@ -5,11 +5,16 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'shared/navbar' %>
+    <main role="main">
+      <div class="container">
+        <%= yield %>
+      </div>
+    </main>
   </body>
 </html>

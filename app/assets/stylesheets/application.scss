@@ -1,0 +1,8 @@
+// Custom bootstrap variables must be set or imported *before* bootstrap.
+html, body, main {
+  height: 100%;
+}
+
+body { padding-top: 80px; }
+
+@import "bootstrap";
