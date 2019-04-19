@@ -15,15 +15,13 @@ class BaseParserService
     puts get_elements(content).count
 
     get_elements(content).each do |e|
-      data = {
+      create_record(
         source: source,
         title: title(e),
         description: description(e),
         date_start: date_start(e),
         date_end: date_end(e)
-      }
-
-      create_record(data)
+      )
     end
     nil
   end
@@ -47,9 +45,7 @@ class BaseParserService
 
   def create_record(data)
     ActiveRecord::Base.transaction do
-      unless Event.find_by(data.slice(:source, :title, :date_start, :date_end))
-        Event.create!(data)
-      end
+      Event.create!(data) unless Event.find_by(data.slice(:source, :title, :date_start, :date_end))
     end
   end
 end
