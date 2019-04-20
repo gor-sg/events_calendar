@@ -12,8 +12,6 @@ class BaseParserService
   def process
     content = Nokogiri::HTML(page_content)
 
-    puts get_elements(content).count
-
     get_elements(content).each do |e|
       create_record(
         source: source,
@@ -40,6 +38,10 @@ class BaseParserService
   end
 
   def source
+    @source ||= Source.find_or_create_by(name: source_host)
+  end
+
+  def source_host
     URI(self.class::URL).host
   end
 

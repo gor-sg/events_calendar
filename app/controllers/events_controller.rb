@@ -3,14 +3,14 @@
 class EventsController < ApplicationController
   def index
     # TODO: Move sources to separate table
-    @sources = Event.distinct.pluck(:source)
+    @sources = Source.pluck(:name)
 
     prepare_filters
 
-    @events = Event.all.order(date_start: :asc)
+    @events = Event.joins(:source).order(date_start: :asc)
     @events.where!('date_start >= ?', @date_start)
     @events.where!('date_end <= ?', @date_end)
-    @events.where!(source: @source) if @source
+    @events.where!(sources: { name: @source }) if @source
     @events.where!('title ilike ?', "%#{@query}%") if @query
   end
 
