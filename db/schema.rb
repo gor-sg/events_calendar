@@ -19,12 +19,12 @@ ActiveRecord::Schema.define(version: 2019_04_20_124411) do
     t.bigint "source_id", null: false
     t.string "title", null: false
     t.string "description", null: false
-    t.date "date_start", null: false
-    t.date "date_end", null: false
+    t.date "starts_on", null: false
+    t.date "ends_on", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["source_id"], name: "index_events_on_source_id"
-    t.index ["title", "source_id", "date_start", "date_end"], name: "index_events_on_title_and_source_id_and_date_start_and_date_end", unique: true
+    t.index ["title", "source_id", "starts_on", "ends_on"], name: "index_events_on_title_and_source_id_and_starts_on_and_ends_on", unique: true
   end
 
   create_table "sources", force: :cascade do |t|

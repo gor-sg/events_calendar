@@ -5,12 +5,12 @@ class CreateEvents < ActiveRecord::Migration[5.2]
       t.string :title, null: false
       t.string :description, null: false
 
-      t.date :date_start, null: false
-      t.date :date_end, null: false
+      t.date :starts_on, null: false
+      t.date :ends_on, null: false
 
       t.timestamps
     end
 
-    add_index :events, [:title, :source_id, :date_start, :date_end], unique: true
+    add_index :events, [:title, :source_id, :starts_on, :ends_on], unique: true
   end
 end

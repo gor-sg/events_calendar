@@ -17,8 +17,8 @@ class BaseParserService
         source: source,
         title: title(e),
         description: description(e),
-        date_start: date_start(e),
-        date_end: date_end(e)
+        starts_on: start_date(e),
+        ends_on: end_date(e)
       )
     end
     nil
@@ -47,7 +47,7 @@ class BaseParserService
 
   def create_record(data)
     ActiveRecord::Base.transaction do
-      Event.create!(data) unless Event.find_by(data.slice(:source, :title, :date_start, :date_end))
+      Event.create!(data) unless Event.find_by(data.slice(:source, :title, :starts_on, :ends_on))
     end
   end
 end

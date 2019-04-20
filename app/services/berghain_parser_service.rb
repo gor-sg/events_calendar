@@ -25,11 +25,11 @@ class BerghainParserService < BaseParserService
     date_and_title(element).split(': ').first.to_date
   end
 
-  def date_start(element)
+  def start_date(element)
     date(element)
   end
 
-  def date_end(element)
+  def end_date(element)
     date(element)
   end
 end

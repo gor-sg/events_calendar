@@ -5,12 +5,12 @@
       <%= form.select :source, options_for_select(@sources, selected: @source), { include_blank: '- all -' }, class: 'form-control' %>
     </div>
     <div class="col-md-2 mb-3">
-      <%= form.label :date_start, 'From' %>
-      <%= form.text_field :date_start, type: 'date', class: 'form-control', value: @date_start, min: Date.today %>
+      <%= form.label :starts_on, 'From' %>
+      <%= form.text_field :starts_on, type: 'date', class: 'form-control', value: @starts_on, min: Date.today %>
     </div>
     <div class="col-md-2 mb-3">
-      <%= form.label :date_end, 'To' %>
-      <%= form.text_field :date_end, type: 'date', class: 'form-control', value: @date_end, min: Date.today %>
+      <%= form.label :ends_on, 'To' %>
+      <%= form.text_field :ends_on, type: 'date', class: 'form-control', value: @ends_on, min: Date.today %>
     </div>
     <div class="col-md-5 mb-3">
       <%= form.label :query %>

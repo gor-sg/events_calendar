@@ -7,7 +7,7 @@
       <% @events.each do |event| %>
         <div class="card mb-3">
           <div class="card-header">
-            <%= event.date_start %><% unless event.single? %> - <%= event.date_end %><% end %>
+            <%= event.starts_on %><% unless event.single? %> - <%= event.ends_on %><% end %>
           </div>
           <div class="card-body">
             <h5 class="card-title"><%= event.title %></h5>

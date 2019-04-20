@@ -17,19 +17,19 @@ class CoBerlinParserService < BaseParserService
     element.css('.article-text').text
   end
 
-  def date_start(element)
-    return date_single(element) if single_event?(element)
+  def start_date(element)
+    return single_date(element) if single_event?(element)
 
     element.css('.date-display-start')[0]['content'].to_date
   end
 
-  def date_end(element)
-    return date_single(element) if single_event?(element)
+  def end_date(element)
+    return single_date(element) if single_event?(element)
 
     element.css('.date-display-end')[0]['content'].to_date
   end
 
-  def date_single(element)
+  def single_date(element)
     element.css('.date-display-single')[0]['content'].to_date
   end
 
