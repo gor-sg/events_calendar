@@ -2,7 +2,6 @@
 
 class EventsController < ApplicationController
   def index
-    # TODO: Move sources to separate table
     @sources = Source.pluck(:name)
 
     prepare_filters
@@ -18,10 +17,10 @@ class EventsController < ApplicationController
 
   def prepare_filters
     @date_start = params[:date_start].to_date if params[:date_start].present?
-    @date_start ||= Date.today
+    @date_start = Date.today if @date_start.nil? || @date_start.past?
 
     @date_end = params[:date_end].to_date if params[:date_end].present?
-    @date_end ||= Date.today + 7.days
+    @date_end ||= Date.today + 7.days if @date_end.nil? || @date_end.past?
 
     @date_start, @date_end = @date_end, @date_start if @date_start > @date_end
 
