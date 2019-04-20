@@ -1,0 +1,25 @@
+<%= form_with(url: root_path, method: :get, local: true) do |form| %>
+  <div class="form-row">
+    <div class="col-md-3 mb-3">
+      <%= form.label :source %>
+      <%= form.select :source, options_for_select(@sources, selected: @source), { include_blank: '- all -' }, class: 'form-control' %>
+    </div>
+    <div class="col-md-2 mb-3">
+      <%= form.label :date_start, 'From' %>
+      <%= form.text_field :date_start, type: 'date', class: 'form-control', value: @date_start, min: Date.today %>
+    </div>
+    <div class="col-md-2 mb-3">
+      <%= form.label :date_end, 'To' %>
+      <%= form.text_field :date_end, type: 'date', class: 'form-control', value: @date_end, min: Date.today %>
+    </div>
+    <div class="col-md-5 mb-3">
+      <%= form.label :query %>
+      <%= form.text_field :query, type: 'text', class: 'form-control', value: params[:query] %>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-12 mb-3">
+      <div class='align-bottom'><%= form.submit 'Search', class: 'btn btn-primary' %></div>
+    </div>
+  </div>
+<% end %>

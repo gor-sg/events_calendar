@@ -15,4 +15,7 @@
 #
 
 class Event < ApplicationRecord
+  def single?
+    date_start == date_end
+  end
 end

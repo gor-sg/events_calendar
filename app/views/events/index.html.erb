@@ -1,7 +1,23 @@
 <div class="row">
-  <div class="col-md-6">
-    form here
+  <div class="col-12">
+    <%= render 'form' %>
   </div>
-  <div class="col-md-6">
+  <div class="col-12">
+    <% if @events.any? %>
+      <% @events.each do |event| %>
+        <div class="card mb-3">
+          <div class="card-header">
+            <%= event.date_start %><% unless event.single? %> - <%= event.date_end %><% end %>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title"><%= event.title %></h5>
+            <p class="card-text"><%= event.description %></p>
+            <p class="card-text"><small class="text-muted"><%= event.source %></small></p>
+          </div>
+        </div>
+      <% end %>
+    <% elsif %>
+      No events found
+    <% end %>
   </div>
 </div>
