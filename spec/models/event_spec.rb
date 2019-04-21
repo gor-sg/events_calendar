@@ -52,4 +52,14 @@ RSpec.describe Event, type: :model do
 
     it { expect { Event.create!(event_data) }.to raise_error(ActiveRecord::RecordNotUnique) }
   end
+
+  describe 'single?' do
+    let(:single_day_event) { create(:event, starts_on: Date.today, ends_on: Date.today) }
+    let(:multi_day_event) { create(:event, starts_on: Date.today, ends_on: Date.tomorrow) }
+
+    before { Timecop.freeze }
+
+    it { expect(single_day_event.single?).to eq(true) }
+    it { expect(multi_day_event.single?).to eq(false) }
+  end
 end
