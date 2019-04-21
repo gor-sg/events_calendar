@@ -24,20 +24,18 @@ group :development, :test do
 end
 
 group :development do
-  gem 'database_cleaner'
+  gem 'annotate'
   gem 'dotenv-rails'
-  gem 'factory_bot_rails'
-  gem 'faker'
+  gem 'foreman'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'rspec-rails'
-end
-
-group :development do
-  gem 'annotate'
-  gem 'foreman'
   gem 'rubocop', require: false
 end
 
 group :test do
+  gem 'database_cleaner'
+  gem 'factory_bot_rails'
+  gem 'faker'
   gem 'shoulda-matchers'
+  gem 'timecop'
 end
