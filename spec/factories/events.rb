@@ -14,10 +14,12 @@
 #  updated_at  :datetime         not null
 #
 
-class Event < ApplicationRecord
-  belongs_to :source, foreign_key: 'source_id'
-
-  def single?
-    starts_on == ends_on
+FactoryBot.define do
+  factory :event do
+    title { Faker::Lorem.sentence }
+    description { Faker::Lorem.sentence }
+    starts_on { Date.tomorrow }
+    ends_on { Date.tomorrow + rand(7).days }
+    source
   end
 end
