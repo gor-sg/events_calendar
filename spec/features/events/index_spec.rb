@@ -4,6 +4,8 @@ describe 'index action', type: :feature do
   describe 'open page without parameters' do
     let!(:target_event) { create :event, starts_on: Date.today, ends_on: Date.tomorrow }
 
+    before { Timecop.freeze }
+
     it do
       visit root_url
 
@@ -36,6 +38,8 @@ describe 'index action', type: :feature do
     let!(:target_event) { create :event, starts_on: Date.tomorrow }
     let!(:another_event) { create :event, starts_on: Date.today }
 
+    before { Timecop.freeze }
+
     it do
       visit root_url
       within('form') { fill_in 'starts_on', with: Date.tomorrow }
@@ -49,6 +53,8 @@ describe 'index action', type: :feature do
   describe 'filter by ends_on' do
     let!(:target_event) { create :event, starts_on: Date.tomorrow, ends_on: Date.tomorrow }
     let!(:another_event) { create :event, starts_on: Date.today, ends_on: Date.today }
+
+    before { Timecop.freeze }
 
     it do
       visit root_url
