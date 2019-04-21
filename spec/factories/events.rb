@@ -18,8 +18,8 @@ FactoryBot.define do
   factory :event do
     title { Faker::Lorem.sentence }
     description { Faker::Lorem.sentence }
-    starts_on { Date.tomorrow }
-    ends_on { Date.tomorrow + rand(7).days }
+    starts_on { Date.today }
+    ends_on { Date.today + rand(7).days }
     source
   end
 end
