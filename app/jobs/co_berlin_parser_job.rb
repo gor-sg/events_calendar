@@ -4,6 +4,6 @@ class CoBerlinParserJob < ApplicationJob
   queue_as :parsers
 
   def perform
-    CoBerlinParserJob.perform
+    CoBerlinParserService.perform
   end
 end
