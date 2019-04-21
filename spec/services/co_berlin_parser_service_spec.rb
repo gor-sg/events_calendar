@@ -52,7 +52,7 @@ RSpec.describe CoBerlinParserService do
     end
   end
 
-  context 'multy_date' do
+  context 'multi_date' do
     let(:test_source) { create :source }
     let(:test_content) do
       <<-TEST_CONTENT
