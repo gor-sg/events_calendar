@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :sessions, only: :create
   resource :profile, only: [:update]
 
+  resources :events
   get :me, to: 'profile#show'
   root to: 'sessions#new'
 end
