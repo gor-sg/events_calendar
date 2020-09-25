@@ -2,7 +2,11 @@ class SessionsController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
 
   def new
-    @user = User.new
+    if current_user
+      redirect_to current_user
+    else
+      @user = User.new
+    end
   end
 
   def create

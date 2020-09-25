@@ -6,6 +6,12 @@
     </button>
 
     <% if current_user %>
+      <ul class="nav navbar-nav">
+        <li class="nav-item">
+          <%= link_to "Applications", "/oauth/applications", class: "nav-link" %>
+        </li>
+      </ul>
+
       <span class="navbar-text ml-auto">
         Logged in as <%= current_user.email %>
       </span>

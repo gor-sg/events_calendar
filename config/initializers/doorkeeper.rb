@@ -122,7 +122,7 @@ Doorkeeper.configure do
   # +ActionController::API+. The return value of this option must be a stringified class name.
   # See https://doorkeeper.gitbook.io/guides/configuration/other-configurations#custom-base-controller
   #
-  # base_controller 'ApplicationController'
+  base_controller 'ApplicationController'
 
   # Reuse access token for the same resource owner within an application (disabled by default).
   #
@@ -270,7 +270,7 @@ Doorkeeper.configure do
   # #call can be used in order to allow conditional checks (to allow non-SSL
   # redirects to localhost for example).
   #
-  # force_ssl_in_redirect_uri !Rails.env.development?
+  force_ssl_in_redirect_uri false
   #
   # force_ssl_in_redirect_uri { |uri| uri.host != 'localhost' }
 
