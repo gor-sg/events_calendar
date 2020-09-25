@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'profile/show'
+  get 'profile/edit'
+  get 'profile/update'
   use_doorkeeper
 
   get 'signup', to: 'users#new', as: 'signup'
@@ -9,5 +12,8 @@ Rails.application.routes.draw do
 
   resources :users
   resources :sessions, only: :create
+  resource :profile, only: [:update]
+
+  get :me, to: 'profile#show'
   root to: 'sessions#new'
 end
